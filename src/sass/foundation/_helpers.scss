@@ -1,0 +1,56 @@
+// *************************************
+//
+//   Helpers
+//   -> Functions, Mixins, Extends, Animations
+//
+// *************************************
+
+// -------------------------------------
+//   Functions
+// -------------------------------------
+
+// ...
+
+// -------------------------------------
+//   Mixins
+// -------------------------------------
+
+// ...
+
+// -------------------------------------
+//   Extends
+// -------------------------------------
+
+// ----- Debug ----- //
+
+.debug {
+  background-color: pink !important;
+}
+
+// ----- Ellipsis ----- //
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// ----- Image Replacement ----- //
+
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  &::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+  }
+}
+
+// -------------------------------------
+//   Animations
+// -------------------------------------
+
+// ...

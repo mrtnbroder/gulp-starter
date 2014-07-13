@@ -1,8 +1,13 @@
-preferred_syntax = :sass
-http_path = '/'
-css_dir = 'build'
-sass_dir = 'src/sass'
-images_dir = 'build/images'
-fonts_dir = 'build/fonts'
-relative_assets = true
-line_comments = true
+require "susy"
+require "breakpoint"
+require "modular-scale"
+
+preferred_syntax = :scss
+http_path        = '/'
+css_dir          = 'build'
+sass_dir         = 'src/sass'
+images_dir       = 'build/images'
+fonts_dir        = 'build/fonts'
+relative_assets  = true
+line_comments    = true
+output_style     = :nested

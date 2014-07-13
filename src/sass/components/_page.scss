@@ -1,0 +1,23 @@
+// *************************************
+//
+//   Page
+//   -> Page Specific
+//      * http://jsfiddle.net/necolas/rZvEF/
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .page[.page--flag]
+//   .page-media
+//     / ...
+//   .page-content
+//     / ...
+//
+// *************************************
+
+.page {
+  @include susy-breakpoint($desktop, $susy-desktop) {
+    margin-left: 20px;
+  }
+}

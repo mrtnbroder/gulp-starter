@@ -1,0 +1,405 @@
+// *************************************
+//
+//   Grid
+//   -> Based on the following:
+//      * https://github.com/necolas/suit-grid
+//      * https://github.com/csswizardry/csswizardry-grids
+//
+// -------------------------------------
+//   Template (Haml)
+// -------------------------------------
+//
+// .g
+//   .g-b[.g-b--|pull--|push--|1of2|1of3|...]
+//   .g-b[.g-b--|pull--|push--|1of2|1of3|...]
+//   .g-b[.g-b--|pull--|push--|1of2|1of3|...]
+//   .g-b[.g-b--|pull--|push--|1of2|1of3|...]
+//
+// *************************************
+
+// -------------------------------------
+//   Variables
+// -------------------------------------
+
+$max-columns: 12;
+
+$susy: (
+  flow: ltr,
+  math: fluid,
+  output: float,
+  gutter-position: after,
+  container: auto,
+  container-position: center,
+  columns: 4,
+  gutters: 1/4,
+  column-width: auto,
+  global-box-sizing: border-box,
+  last-flow: to,
+  debug: (
+    image: show,
+    color: rgba(#66f, .25),
+    output: overlay,
+    toggle: bottom right,
+  )
+);
+
+$susy-mobile: (
+  gutters: 1/4,
+  column-width: auto
+);
+
+$susy-tablet: (
+  math: static,
+  columns: 8,
+  gutters: 20px / 68px,
+  column-width: 68px
+);
+
+$susy-desktop: (
+  math: static,
+  columns: $max-columns,
+  gutters: 20px / 62px,
+  column-width: 62px
+);
+
+@mixin device-type($namespace:"", $cols: 4, $static: false) {
+
+  // -------------------------------------
+  //   Half
+  // -------------------------------------
+  &--#{$namespace}1of2 {
+    @include span(1 of 2);
+  }
+
+
+  // -------------------------------------
+  //   Three
+  // -------------------------------------
+  &--#{$namespace}1of3 {
+    @include span(1 of 3);
+  }
+
+  &--#{$namespace}2of3 {
+    @include span(2 of 3);
+  }
+
+  // -------------------------------------
+  //   Four
+  // -------------------------------------
+
+  @if $cols >= 4 {
+    &--#{$namespace}1of4 {
+      @include span(1 of 4);
+    }
+
+    &--#{$namespace}2of4 {
+      @if $static == true {
+        @include span(2 of 4);
+      } @else {
+        @extend .g-b--#{$namespace}1of2;
+      }
+    }
+
+    &--#{$namespace}3of4 {
+      @include span(3 of 4);
+    }
+  }
+
+  // -------------------------------------
+  //   Five
+  // -------------------------------------
+
+  @if $cols >= 5 {
+    &--#{$namespace}1of5 {
+      @include span(1 of 5);
+    }
+
+    &--#{$namespace}2of5 {
+      @include span(2 of 5);
+    }
+
+    &--#{$namespace}3of5 {
+      @include span(3 of 5);
+    }
+
+    &--#{$namespace}4of5 {
+      @include span(4 of 5);
+    }
+  }
+
+  // -------------------------------------
+  //   Six
+  // -------------------------------------
+
+  @if $cols >= 6 {
+    &--#{$namespace}1of6 {
+      @include span(1 of 6);
+    }
+
+    &--#{$namespace}2of6 {
+      @if $static == true {
+        @include span(2 of 6);
+      } @else {
+        @extend .g-b--#{$namespace}1of3;
+      }
+    }
+
+    &--#{$namespace}3of6 {
+      @if $static == true {
+        @include span(3 of 6);
+      } @else {
+        @extend .g-b--#{$namespace}1of2;
+      }
+    }
+
+    &--#{$namespace}4of6 {
+      @if $static == true {
+        @include span(4 of 6);
+      } @else {
+        @extend .g-b--#{$namespace}2of3;
+      }
+    }
+
+    &--#{$namespace}5of6 {
+      @include span(5 of 6);
+    }
+  }
+
+  // -------------------------------------
+  //   Eight
+  // -------------------------------------
+  @if $cols >= 8 {
+
+    &--#{$namespace}1of8 {
+      @include span(1 of 8);
+    }
+
+    &--#{$namespace}2of8 {
+      @if $static == true {
+        @include span(2 of 8);
+      } @else {
+        @extend .g-b--#{$namespace}1of4;
+      }
+    }
+
+    &--#{$namespace}3of8 {
+      @include span(3 of 8);
+    }
+
+    &--#{$namespace}4of8 {
+      @if $static == true {
+        @include span(4 of 8);
+      } @else {
+        @extend .g-b--#{$namespace}1of2;
+      }
+    }
+
+    &--#{$namespace}5of8 {
+      @include span(5 of 8);
+    }
+
+    &--#{$namespace}6of8 {
+      @if $static == true {
+        @include span(6 of 8);
+      } @else {
+        @extend .g-b--#{$namespace}3of4;
+      }
+    }
+
+    &--#{$namespace}7of8 {
+      @include span(7 of 8);
+    }
+  }
+
+  // -------------------------------------
+  //   Ten
+  // -------------------------------------
+
+  @if $cols >= 10 {
+    &--#{$namespace}1of10 {
+      @include span(1 of 10);
+    }
+
+    &--#{$namespace}2of10 {
+      @if $static == true {
+        @include span(2 of 10);
+      } @else {
+        @extend .g-b--#{$namespace}1of5;
+      }
+    }
+
+    &--#{$namespace}3of10 {
+      @include span(3 of 10);
+    }
+
+    &--#{$namespace}4of10 {
+      @if $static == true {
+        @include span(4 of 10);
+      } @else {
+        @extend .g-b--#{$namespace}2of5;
+      }
+    }
+
+    &--#{$namespace}5of10 {
+      @if $static == true {
+        @include span(5 of 10);
+      } @else {
+        @extend .g-b--#{$namespace}1of2;
+      }
+    }
+
+    &--#{$namespace}6of10 {
+      @if $static == true {
+        @include span(6 of 10);
+      } @else {
+        @extend .g-b--#{$namespace}3of5;
+      }
+    }
+
+    &--#{$namespace}7of10 {
+      @include span(7 of 10);
+    }
+
+    &--#{$namespace}8of10 {
+      @if $static == true {
+        @include span(8 of 10);
+      } @else {
+        @extend .g-b--#{$namespace}4of5;
+      }
+    }
+
+    &--#{$namespace}9of10 {
+      @include span(9 of 10);
+    }
+  }
+
+  // -------------------------------------
+  //   Twelve
+  // -------------------------------------
+
+  @if $cols >= 12 {
+    &--#{$namespace}1of12 {
+      @include span(1 of 12);
+    }
+
+    &--#{$namespace}2of12 {
+      @if $static == true {
+        @include span(2 of 12);
+      } @else {
+        @extend .g-b--#{$namespace}1of6;
+      }
+    }
+
+    &--#{$namespace}3of12 {
+      @if $static == true {
+        @include span(3 of 12);
+      } @else {
+        @extend .g-b--#{$namespace}1of4;
+      }
+    }
+
+    &--#{$namespace}4of12 {
+      @if $static == true {
+        @include span(4 of 12);
+      } @else {
+        @extend .g-b--#{$namespace}1of3;
+      }
+    }
+
+    &--#{$namespace}5of12 {
+      @include span(5 of 12);
+    }
+
+    &--#{$namespace}6of12 {
+      @if $static == true {
+        @include span(6 of 12);
+      } @else {
+        @extend .g-b--#{$namespace}1of2;
+      }
+    }
+
+    &--#{$namespace}7of12 {
+      @include span(7 of 12);
+    }
+
+    &--#{$namespace}8of12 {
+      @if $static == true {
+        @include span(8 of 12);
+      } @else {
+        @extend .g-b--#{$namespace}2of3;
+      }
+    }
+
+    &--#{$namespace}9of12 {
+      @if $static == true {
+        @include span(9 of 12);
+      } @else {
+        @extend .g-b--#{$namespace}3of4;
+      }
+    }
+
+    &--#{$namespace}10of12 {
+      @if $static == true {
+        @include span(10 of 12);
+      } @else {
+        @extend .g-b--#{$namespace}5of6;
+      }
+    }
+
+    &--#{$namespace}11of12 {
+      @include span(11 of 12);
+    }
+
+    &--#{$namespace}last {
+      margin-right: 0;
+    }
+  }
+
+}
+
+
+
+// -------------------------------------
+//   Base
+// -------------------------------------
+
+.g {
+
+  // @include container($grid-palm);
+
+  // @include susy-breakpoint($mobile, $susy-mobile) {
+  //   @include container($grid-mobile);
+  // }
+
+  @include susy-breakpoint($tablet, $susy-tablet) {
+    @include container($grid-tablet);
+  }
+
+  @include susy-breakpoint($desktop, $susy-desktop) {
+    @include container($grid-desktop);
+  }
+}
+
+.g-b {
+
+  // @include span(4);
+
+  // @include device-type();
+
+  // @include susy-breakpoint($mobile, $susy-mobile) {
+  //   @include device-type("m");
+  // }
+
+  @include susy-breakpoint($tablet, $susy-tablet) {
+    @include device-type("t", 8, true);
+  }
+
+  @include susy-breakpoint($desktop, $susy-desktop) {
+    @include device-type("d", 12, true);
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+

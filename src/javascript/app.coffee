@@ -1,2 +1,6 @@
-View =  require './view'
-view = new View(el: 'body')
+
+jQuery = require "jquery"
+
+do ($ = jQuery, window, document) ->
+
+  console.log "Hello from app.js!"

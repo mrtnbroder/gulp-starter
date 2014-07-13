@@ -1,0 +1,106 @@
+// *************************************
+//
+//   Config
+//   -> Fonts, Variables
+//
+// *************************************
+
+// -------------------------------------
+//   @font-face
+// -------------------------------------
+
+// ----- Open Sans ----- //
+
+// +font-face('OpenSans', 'OpenSans')
+// +font-face('OpenSans', 'OpenSansBold', bold)
+// +font-face('OpenSans', 'OpenSansItalic', normal, italic)
+
+// -------------------------------------
+//   Colors
+// -------------------------------------
+
+// ----- Palette ----- //
+
+$plum: #4e4e5b;
+
+// ----- Base ----- //
+
+$c-background: #fafafa;
+$c-background-invert: invert($c-background);
+$c-border: lighten($plum, 30%);
+$c-highlight: $plum;
+$c-subdue: lighten($plum, 40%);
+$c-text-invert: white;
+$c-text: #444444;
+
+// ----- Components ----- //
+
+// ...
+
+// ----- Structures ----- //
+
+// ...
+
+// -------------------------------------
+//   Base
+// -------------------------------------
+
+// ----- Borders & Box Shadow ----- //
+
+$base-border-radius: 3px;
+$base-border-style:  solid;
+$base-border-width:  2px;
+$base-border:        $base-border-width $base-border-style $c-border;
+$base-box-shadow:    0 2px 0 rgba($c-text, 0.25);
+
+// ----- Typography ----- //
+
+$base-font-family-heading: sans-serif;
+$base-font-family:         sans-serif;
+$base-font-size:           16px;
+$base-font-size-xs:        60%;
+$base-font-size-s:         75%;
+$base-font-size-m:         90%;
+$base-font-size-l:         115%;
+$base-font-size-xl:        150%;
+$base-line-height:         24px;
+
+// ----- Sizing ----- //
+
+$base-max-width:   em(1024px);
+$base-max-width-s: em(700px);
+$base-space:       em(20px);
+$base-space-xs:    0.25 * $base-space;
+$base-space-s:     0.5 * $base-space;
+$base-space-l:     2 * $base-space;
+$base-space-xl:    4 * $base-space;
+
+// -------------------------------------
+//   Components
+// -------------------------------------
+
+// ----- Grid ----- //
+
+$grid-palm:    em(300px);
+$grid-mobile:  em(480px);
+$grid-tablet:  em(700px);
+$grid-desktop: em(980px);
+// $g-xl:      em(1440px);
+
+// ----- Breakpoints ----- //
+
+$palm:    em(320px);
+$mobile:  em(568px);
+$tablet:  em(768px);
+$desktop: em(1024px);
+// $imac: em(1440px);
+
+$betweenMobileAndTablet:  $mobile and max-width $tablet;
+$betweenMobileAndDesktop: $mobile and max-width $desktop;
+$betweenTabletAndDesktop: $tablet and max-width $desktop;
+
+// -------------------------------------
+//   Structures
+// -------------------------------------
+
+// ...

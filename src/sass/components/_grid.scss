@@ -39,7 +39,7 @@ $susy: (
     image: show,
     color: rgba(#66f, .25),
     output: overlay,
-    toggle: bottom right,
+    toggle: bottom right
   )
 );
 
@@ -365,11 +365,11 @@ $susy-desktop: (
 
 .g {
 
-  // @include container($grid-palm);
+  @include container($grid-palm);
 
-  // @include susy-breakpoint($mobile, $susy-mobile) {
-  //   @include container($grid-mobile);
-  // }
+  @include susy-breakpoint($mobile, $susy-mobile) {
+    @include container($grid-mobile);
+  }
 
   @include susy-breakpoint($tablet, $susy-tablet) {
     @include container($grid-tablet);
@@ -390,16 +390,15 @@ $susy-desktop: (
   //   @include device-type("m");
   // }
 
-  @include susy-breakpoint($tablet, $susy-tablet) {
-    @include device-type("t", 8, true);
-  }
-
-  @include susy-breakpoint($desktop, $susy-desktop) {
-    @include device-type("d", 12, true);
-  }
+  // @include susy-breakpoint($tablet, $susy-tablet) {
+  //   @include device-type("t", 8, true);
+  // }
+  //
+  // @include susy-breakpoint($desktop, $susy-desktop) {
+  //   @include device-type("d", 12, true);
+  // }
 
   &:last-child {
     margin-right: 0;
   }
 }
-

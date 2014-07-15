@@ -1,6 +1,11 @@
-require "susy"
-require "breakpoint"
-require "modular-scale"
+# ==============================
+#
+# Compass Config
+#
+# ==============================
+
+require 'susy'
+require 'breakpoint'
 
 preferred_syntax = :scss
 http_path        = '/'

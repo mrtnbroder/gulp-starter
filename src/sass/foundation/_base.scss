@@ -9,7 +9,7 @@ html {
   background: $c-background;
   color: $c-text;
   font-family: $base-font-family;
-  font-size: $base-font-size;
+  font-size: $base-font-size / 16px + em;
   line-height: $base-line-height;
 }
 
@@ -21,43 +21,92 @@ body {
 //   Block Content
 // -------------------------------------
 
-ul, p {
-  margin-bottom: $base-space;
-  margin-top: 0;
+ul,
+ol {
+  @extend %type-vertical-rhythm;
+  @include sp(margin-left);
 }
 
-li {
-  margin-bottom: $base-space-s;
-  margin-top: 0;
+li > ul,
+li > ol {
+  margin-bottom: 0;
+}
+
+p {
+  @extend %type-vertical-rhythm;
+}
+
+address {
+  @extend %type-vertical-rhythm;
+}
+
+pre {
+  @extend %type-vertical-rhythm;
+}
+
+blockquote {
+  @extend %type-vertical-rhythm;
+  @include sp(padding-left);
+  @include sp(padding-right);
+}
+
+table {
+  @extend %type-vertical-rhythm;
+}
+
+th,
+td {
+  padding: $base-line-height / 2;
 }
 
 // ----- Headings ----- //
 
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4 {
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
   font-family: $base-font-family-heading;
   font-weight: bold;
-  line-height: 1.2;
-  margin-bottom: $base-space-xs;
-  margin-top: 0;
+  @extend %type-vertical-rhythm;
 }
 
-h1, .h1 {
-  font-size: 200%;
+h1,
+.h1 {
+  @include fs($base-font-size-h1);
 }
 
-h2, .h2 {
-  font-size: 150%;
+h2,
+.h2 {
+  @include fs($base-font-size-h2);
 }
 
-h3, .h3 {
-  font-size: 125%;
+h3,
+.h3 {
+  @include fs($base-font-size-h3);
+  line-height: 1.5;
 }
 
-h4, .h4 {
-  font-size: 110%;
+h4,
+.h4 {
+  @include fs($base-font-size-h4);
+}
+
+h5,
+.h5 {
+  @include fs($base-font-size-h5);
+}
+
+h6,
+.h6 {
+  @include fs($base-font-size-h6);
 }
 
 // -------------------------------------
@@ -70,6 +119,7 @@ a {
   border-bottom: $base-border;
   color: $c-highlight;
   text-decoration: none;
+
   &:hover,
   &:focus {
     border-bottom-color: $c-highlight;

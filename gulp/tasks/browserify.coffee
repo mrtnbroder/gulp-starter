@@ -15,7 +15,6 @@ bundleLogger = require("../util/bundleLogger")
 gulp         = require("gulp")
 handleErrors = require("../util/handleErrors")
 source       = require("vinyl-source-stream")
-modernizr    = require("gulp-modernizr")
 
 gulp.task "browserify", ->
 
@@ -52,4 +51,3 @@ gulp.task "browserify", ->
   # Rebundle with watchify on changes.
   bundler.on "update", bundle if global.isWatching
   bundle()
-

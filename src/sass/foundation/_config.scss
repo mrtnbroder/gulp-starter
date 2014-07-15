@@ -45,35 +45,49 @@ $c-text: #444444;
 //   Base
 // -------------------------------------
 
+// Scaling Variables
+$golden:           1.618;
+// $minor-second:     1.067;
+// $major-second:     1.125;
+// $minor-third:      1.2;
+// $major-third:      1.25;
+// $perfect-fourth:   1.333;
+// $augmented-fourth: 1.414;
+$perfect-fifth:    1.5;
+// $minor-sixth:      1.6;
+// $major-sixth:      1.667;
+// $minor-seventh:    1.778;
+// $major-seventh:    1.875;
+// $octave:           2;
+// $major-tenth:      2.5;
+// $major-eleventh:   2.667;
+// $major-twelfth:    3;
+// $double-octave:    4;
+
+// ----- Typography ----- //
+
+$base-font-family-heading: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-family:         "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+$ratio:            $perfect-fifth;
+$base-font-size:   16px;
+$base-line-height: modular-scale($base-font-size, 1, $ratio);
+// $base-font-unit:   rem;
+
+$base-font-size-h1: modular-scale($base-font-size, 3, $ratio);
+$base-font-size-h2:  modular-scale($base-font-size, 2, $ratio);
+$base-font-size-h3:   modular-scale($base-font-size, 1, $ratio);
+$base-font-size-h4:   modular-scale($base-font-size, 0, $ratio);
+$base-font-size-h5:   modular-scale($base-font-size, -1, $ratio);
+$base-font-size-h6:  modular-scale($base-font-size, -1, $ratio);
+
 // ----- Borders & Box Shadow ----- //
 
 $base-border-radius: 3px;
 $base-border-style:  solid;
 $base-border-width:  2px;
 $base-border:        $base-border-width $base-border-style $c-border;
-$base-box-shadow:    0 2px 0 rgba($c-text, 0.25);
-
-// ----- Typography ----- //
-
-$base-font-family-heading: sans-serif;
-$base-font-family:         sans-serif;
-$base-font-size:           16px;
-$base-font-size-xs:        60%;
-$base-font-size-s:         75%;
-$base-font-size-m:         90%;
-$base-font-size-l:         115%;
-$base-font-size-xl:        150%;
-$base-line-height:         24px;
-
-// ----- Sizing ----- //
-
-$base-max-width:   em(1024px);
-$base-max-width-s: em(700px);
-$base-space:       em(20px);
-$base-space-xs:    0.25 * $base-space;
-$base-space-s:     0.5 * $base-space;
-$base-space-l:     2 * $base-space;
-$base-space-xl:    4 * $base-space;
+$base-box-shadow:    0 2px 0 rgba($c-text, .25);
 
 // -------------------------------------
 //   Components

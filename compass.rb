@@ -16,3 +16,5 @@ fonts_dir        = 'build/fonts'
 relative_assets  = true
 line_comments    = true
 output_style     = :nested
+
+Sass::Script::Number.precision = 7

@@ -1,4 +1,8 @@
-@include border-box-sizing;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 

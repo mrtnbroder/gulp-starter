@@ -5,6 +5,8 @@
 //
 // *************************************
 
+$debug: true;
+
 // -------------------------------------
 //   @font-face
 // -------------------------------------
@@ -50,8 +52,8 @@ $golden:           1.618;
 // $minor-second:     1.067;
 // $major-second:     1.125;
 // $minor-third:      1.2;
-// $major-third:      1.25;
-// $perfect-fourth:   1.333;
+$major-third:      1.25;
+$perfect-fourth:   1.333;
 // $augmented-fourth: 1.414;
 $perfect-fifth:    1.5;
 // $minor-sixth:      1.6;
@@ -66,19 +68,20 @@ $perfect-fifth:    1.5;
 
 // ----- Typography ----- //
 
+$base-font-family-serif: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
 $base-font-family-heading: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $base-font-family:         "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-$ratio:            $golden;
-$base-font-size:   16px;
-$base-line-height: modular-scale($base-font-size, 1, $ratio);
-// $base-font-unit:   rem;
+$ratio:             $golden;
+$base-font-size:    16px;
+$base-line-height:  ceil(modular-scale($base-font-size, 1, $ratio));
+// $base-font-unit: rem;
 
 $base-font-size-h1: modular-scale($base-font-size, 3, $ratio);
 $base-font-size-h2: modular-scale($base-font-size, 2, $ratio);
 $base-font-size-h3: modular-scale($base-font-size, 1, $ratio);
-$base-font-size-h4: modular-scale($base-font-size, 0, $ratio);
-$base-font-size-h5: modular-scale($base-font-size, -1, $ratio);
+$base-font-size-h4: modular-scale($base-font-size, 1, $ratio);
+$base-font-size-h5: modular-scale($base-font-size, 0, $ratio);
 $base-font-size-h6: modular-scale($base-font-size, -1, $ratio);
 
 // ----- Borders & Box Shadow ----- //
@@ -95,23 +98,28 @@ $base-box-shadow:    0 2px 0 rgba($c-text, .25);
 
 // ----- Grid ----- //
 
-$grid-palm:    em(300px);
-$grid-mobile:  em(480px);
-$grid-tablet:  em(700px);
-$grid-desktop: em(980px);
-// $g-xl:      em(1440px);
+$grid-palm:    300px;
+$grid-mobile:  480px;
+$grid-tablet:  700px;
+$grid-desktop: 960px;
+
+$grid-gutter:         20px;
+$grid-gutter-mobile:  $grid-gutter;
+$grid-gutter-tablet:  20px;
+$grid-gutter-desktop: 24px;
+// $g-xl:             1440px;
 
 // ----- Breakpoints ----- //
 
-$palm:    em(320px);
-$mobile:  em(568px);
-$tablet:  em(768px);
-$desktop: em(1024px);
+$palm:    320px;
+$mobile:  568px;
+$tablet:  768px;
+$desktop: 1024px;
 // $imac: em(1440px);
 
-$betweenMobileAndTablet:  $mobile and max-width $tablet;
-$betweenMobileAndDesktop: $mobile and max-width $desktop;
-$betweenTabletAndDesktop: $tablet and max-width $desktop;
+$between-mobile-and-tablet:  $mobile and max-width $tablet;
+$between-mobile-and-desktop: $mobile and max-width $desktop;
+$between-tablet-and-desktop: $tablet and max-width $desktop;
 
 // -------------------------------------
 //   Structures

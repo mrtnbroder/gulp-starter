@@ -5,6 +5,7 @@ gulp.task "watch", [
   "setWatch"
   "browserSync"
 ], ->
+  # gulp.watch "src/sass/grid.{scss,sass}", ["grid"]
   gulp.watch "src/sass/**", ["compass"]
   gulp.watch "src/images/**", ["images"]
   gulp.watch "src/htdocs/**", ["copy"]

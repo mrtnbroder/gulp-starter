@@ -6,11 +6,16 @@
 // *************************************
 
 html {
-  background: $c-background;
-  color: $c-text;
+  background:  $c-background;
+  color:       $c-text;
   font-family: $base-font-family;
-  font-size: $base-font-size / 16px + em;
-  line-height: $base-line-height;
+  font-size:   ($base-font-size / 16px) + em;
+  line-height: strip-units(em($base-line-height));
+
+  @if $debug == true {
+    $base-baseline-size: strip-units($base-line-height);
+    background-image: url(http://basehold.it/i/#{$base-baseline-size});
+  }
 }
 
 body {
@@ -45,9 +50,14 @@ pre {
 }
 
 blockquote {
+  font-family: $base-font-family-serif;
+  font-style: italic;
   @extend %type-vertical-rhythm;
-  @include sp(padding-left);
-  @include sp(padding-right);
+  @include fs($base-font-size-h3, 1.5);
+  @include sp(margin-top);
+  @include sp(margin-bottom, 2.5);
+  @include sp(padding-left, 2);
+  @include sp(padding-right, 2);
 }
 
 table {
@@ -90,13 +100,14 @@ h2,
 
 h3,
 .h3 {
-  @include fs($base-font-size-h3);
-  // line-height: 1.5;
+  @include fs($base-font-size-h3, 1.5);
+  @include sp(margin-bottom, 1.5);
 }
 
 h4,
 .h4 {
-  @include fs($base-font-size-h4);
+  @include fs($base-font-size-h4, 1.5);
+  @include sp(margin-bottom, 1.5);
 }
 
 h5,
@@ -106,7 +117,8 @@ h5,
 
 h6,
 .h6 {
-  @include fs($base-font-size-h6);
+  @include fs($base-font-size-h5);
+  // @include sp(margin-bottom, 1.5);
 }
 
 // -------------------------------------

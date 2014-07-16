@@ -10,10 +10,10 @@
 // -------------------------------------
 //
 // .g
-//   .g-b[.g-b--|pull--|push--|1of2|1of3|...]
-//   .g-b[.g-b--|pull--|push--|1of2|1of3|...]
-//   .g-b[.g-b--|pull--|push--|1of2|1of3|...]
-//   .g-b[.g-b--|pull--|push--|1of2|1of3|...]
+//   .g-b[.g-b--center|1of2|1of3|...]
+//   .g-b[.g-b--center|1of2|1of3|...]
+//   .g-b[.g-b--center|1of2|1of3|...]
+//   .g-b[.g-b--center|1of2|1of3|...]
 //
 // *************************************
 
@@ -21,384 +21,567 @@
 //   Variables
 // -------------------------------------
 
-$max-columns: 12;
+$g-columns: 12 !default;
+$g-defaults: "m" $mobile $grid-gutter-mobile, "t" $tablet $grid-gutter-tablet, "d" $desktop $grid-gutter-desktop !default;
+$g-silent: false !default;
 
-$susy: (
-  flow: ltr,
-  math: fluid,
-  output: float,
-  gutter-position: after,
-  container: auto,
-  container-position: center,
-  columns: 4,
-  gutters: 1/4,
-  column-width: auto,
-  global-box-sizing: border-box,
-  last-flow: to,
-  debug: (
-    image: show,
-    color: rgba(#66f, .25),
-    output: overlay,
-    toggle: bottom right
-  )
-);
+// -------------------------------------
+//   Selector Type
+// -------------------------------------
 
-$susy-mobile: (
-  gutters: 1/4,
-  column-width: auto
-);
-
-$susy-tablet: (
-  math: static,
-  columns: 8,
-  gutters: 20px / 68px,
-  column-width: 68px
-);
-
-$susy-desktop: (
-  math: static,
-  columns: $max-columns,
-  gutters: 20px / 62px,
-  column-width: 62px
-);
-
-@mixin device-type($namespace:"", $cols: 4, $static: false) {
-
-  // -------------------------------------
-  //   Half
-  // -------------------------------------
-  &--#{$namespace}1of2 {
-    @include span(1 of 2);
-  }
-
-
-  // -------------------------------------
-  //   Three
-  // -------------------------------------
-  &--#{$namespace}1of3 {
-    @include span(1 of 3);
-  }
-
-  &--#{$namespace}2of3 {
-    @include span(2 of 3);
-  }
-
-  // -------------------------------------
-  //   Four
-  // -------------------------------------
-
-  @if $cols >= 4 {
-    &--#{$namespace}1of4 {
-      @include span(1 of 4);
-    }
-
-    &--#{$namespace}2of4 {
-      @if $static == true {
-        @include span(2 of 4);
-      } @else {
-        @extend .g-b--#{$namespace}1of2;
-      }
-    }
-
-    &--#{$namespace}3of4 {
-      @include span(3 of 4);
-    }
-  }
-
-  // -------------------------------------
-  //   Five
-  // -------------------------------------
-
-  @if $cols >= 5 {
-    &--#{$namespace}1of5 {
-      @include span(1 of 5);
-    }
-
-    &--#{$namespace}2of5 {
-      @include span(2 of 5);
-    }
-
-    &--#{$namespace}3of5 {
-      @include span(3 of 5);
-    }
-
-    &--#{$namespace}4of5 {
-      @include span(4 of 5);
-    }
-  }
-
-  // -------------------------------------
-  //   Six
-  // -------------------------------------
-
-  @if $cols >= 6 {
-    &--#{$namespace}1of6 {
-      @include span(1 of 6);
-    }
-
-    &--#{$namespace}2of6 {
-      @if $static == true {
-        @include span(2 of 6);
-      } @else {
-        @extend .g-b--#{$namespace}1of3;
-      }
-    }
-
-    &--#{$namespace}3of6 {
-      @if $static == true {
-        @include span(3 of 6);
-      } @else {
-        @extend .g-b--#{$namespace}1of2;
-      }
-    }
-
-    &--#{$namespace}4of6 {
-      @if $static == true {
-        @include span(4 of 6);
-      } @else {
-        @extend .g-b--#{$namespace}2of3;
-      }
-    }
-
-    &--#{$namespace}5of6 {
-      @include span(5 of 6);
-    }
-  }
-
-  // -------------------------------------
-  //   Eight
-  // -------------------------------------
-  @if $cols >= 8 {
-
-    &--#{$namespace}1of8 {
-      @include span(1 of 8);
-    }
-
-    &--#{$namespace}2of8 {
-      @if $static == true {
-        @include span(2 of 8);
-      } @else {
-        @extend .g-b--#{$namespace}1of4;
-      }
-    }
-
-    &--#{$namespace}3of8 {
-      @include span(3 of 8);
-    }
-
-    &--#{$namespace}4of8 {
-      @if $static == true {
-        @include span(4 of 8);
-      } @else {
-        @extend .g-b--#{$namespace}1of2;
-      }
-    }
-
-    &--#{$namespace}5of8 {
-      @include span(5 of 8);
-    }
-
-    &--#{$namespace}6of8 {
-      @if $static == true {
-        @include span(6 of 8);
-      } @else {
-        @extend .g-b--#{$namespace}3of4;
-      }
-    }
-
-    &--#{$namespace}7of8 {
-      @include span(7 of 8);
-    }
-  }
-
-  // -------------------------------------
-  //   Ten
-  // -------------------------------------
-
-  @if $cols >= 10 {
-    &--#{$namespace}1of10 {
-      @include span(1 of 10);
-    }
-
-    &--#{$namespace}2of10 {
-      @if $static == true {
-        @include span(2 of 10);
-      } @else {
-        @extend .g-b--#{$namespace}1of5;
-      }
-    }
-
-    &--#{$namespace}3of10 {
-      @include span(3 of 10);
-    }
-
-    &--#{$namespace}4of10 {
-      @if $static == true {
-        @include span(4 of 10);
-      } @else {
-        @extend .g-b--#{$namespace}2of5;
-      }
-    }
-
-    &--#{$namespace}5of10 {
-      @if $static == true {
-        @include span(5 of 10);
-      } @else {
-        @extend .g-b--#{$namespace}1of2;
-      }
-    }
-
-    &--#{$namespace}6of10 {
-      @if $static == true {
-        @include span(6 of 10);
-      } @else {
-        @extend .g-b--#{$namespace}3of5;
-      }
-    }
-
-    &--#{$namespace}7of10 {
-      @include span(7 of 10);
-    }
-
-    &--#{$namespace}8of10 {
-      @if $static == true {
-        @include span(8 of 10);
-      } @else {
-        @extend .g-b--#{$namespace}4of5;
-      }
-    }
-
-    &--#{$namespace}9of10 {
-      @include span(9 of 10);
-    }
-  }
-
-  // -------------------------------------
-  //   Twelve
-  // -------------------------------------
-
-  @if $cols >= 12 {
-    &--#{$namespace}1of12 {
-      @include span(1 of 12);
-    }
-
-    &--#{$namespace}2of12 {
-      @if $static == true {
-        @include span(2 of 12);
-      } @else {
-        @extend .g-b--#{$namespace}1of6;
-      }
-    }
-
-    &--#{$namespace}3of12 {
-      @if $static == true {
-        @include span(3 of 12);
-      } @else {
-        @extend .g-b--#{$namespace}1of4;
-      }
-    }
-
-    &--#{$namespace}4of12 {
-      @if $static == true {
-        @include span(4 of 12);
-      } @else {
-        @extend .g-b--#{$namespace}1of3;
-      }
-    }
-
-    &--#{$namespace}5of12 {
-      @include span(5 of 12);
-    }
-
-    &--#{$namespace}6of12 {
-      @if $static == true {
-        @include span(6 of 12);
-      } @else {
-        @extend .g-b--#{$namespace}1of2;
-      }
-    }
-
-    &--#{$namespace}7of12 {
-      @include span(7 of 12);
-    }
-
-    &--#{$namespace}8of12 {
-      @if $static == true {
-        @include span(8 of 12);
-      } @else {
-        @extend .g-b--#{$namespace}2of3;
-      }
-    }
-
-    &--#{$namespace}9of12 {
-      @if $static == true {
-        @include span(9 of 12);
-      } @else {
-        @extend .g-b--#{$namespace}3of4;
-      }
-    }
-
-    &--#{$namespace}10of12 {
-      @if $static == true {
-        @include span(10 of 12);
-      } @else {
-        @extend .g-b--#{$namespace}5of6;
-      }
-    }
-
-    &--#{$namespace}11of12 {
-      @include span(11 of 12);
-    }
-
-    &--#{$namespace}last {
-      margin-right: 0;
-    }
-  }
-
-}
-
-
+$g-selector: if($g-silent, unquote("%"), unquote("."));
 
 // -------------------------------------
 //   Base
 // -------------------------------------
 
-.g {
-
-  @include container($grid-palm);
-
-  @include susy-breakpoint($mobile, $susy-mobile) {
-    @include container($grid-mobile);
+@mixin grid-type( $gutter ) {
+  #{$g-selector}g {
+    display: block;
+    margin-left: -($gutter / 2);
+    margin-right: -($gutter / 2);
+    &:after {
+      clear: both;
+      content: '';
+      display: table;
+    }
   }
 
-  @include susy-breakpoint($tablet, $susy-tablet) {
-    @include container($grid-tablet);
-  }
-
-  @include susy-breakpoint($desktop, $susy-desktop) {
-    @include container($grid-desktop);
+  #{$g-selector}g-b {
+    float: left;
+    margin: 0;
+    padding-left: $gutter / 2;
+    padding-right: $gutter / 2;
+    width: 100%;
   }
 }
 
-.g-b {
+@include grid-type($grid-gutter);
 
-  // @include span(4);
+@each $device in $g-defaults {
+  @media screen and (min-width: nth($device, 2)) {
+    @include grid-type(nth($device, 3));
+  }
+}
 
-  // @include device-type();
 
-  // @include susy-breakpoint($mobile, $susy-mobile) {
-  //   @include device-type("m");
-  // }
 
-  // @include susy-breakpoint($tablet, $susy-tablet) {
-  //   @include device-type("t", 8, true);
-  // }
-  //
-  // @include susy-breakpoint($desktop, $susy-desktop) {
-  //   @include device-type("d", 12, true);
-  // }
+// -------------------------------------
+//   Modifiers
+// -------------------------------------
 
-  &:last-child {
-    margin-right: 0;
+// ----- Center ----- //
+
+#{$g-selector}g-b--center {
+  display: block;
+  float: none;
+  margin: 0 auto;
+}
+
+// -------------------------------------
+//   Setup
+// -------------------------------------
+
+@mixin device-type($namespace: "") {
+  // ----- One Part ----- //
+  #{$g-selector}g-b--#{$namespace}1of1 {
+    width: 100%;
+  }
+  // ----- Two Parts ----- //
+  #{$g-selector}g-b--#{$namespace}1of2 {
+    width: 50%;
+  }
+  // ----- Three Parts ----- //
+  @if $g-columns >= 3 {
+    #{$g-selector}g-b--#{$namespace}1of3 {
+      width: 33.333%;
+    }
+    #{$g-selector}g-b--#{$namespace}2of3 {
+      width: 66.666%;
+    }
+  }
+  // ----- Four Parts ----- //
+  @if $g-columns >= 4 {
+    #{$g-selector}g-b--#{$namespace}1of4 {
+      width: 25%;
+    }
+    #{$g-selector}g-b--#{$namespace}2of4 {
+      @extend #{$g-selector}g-b--#{$namespace}1of2;
+    }
+    #{$g-selector}g-b--#{$namespace}3of4 {
+      width: 75%;
+    }
+  }
+  // ----- Five Parts ----- //
+  @if $g-columns >= 5 {
+    #{$g-selector}g-b--#{$namespace}1of5 {
+      width: 20%;
+    }
+    #{$g-selector}g-b--#{$namespace}2of5 {
+      width: 40%;
+    }
+    #{$g-selector}g-b--#{$namespace}3of5 {
+      width: 60%;
+    }
+    #{$g-selector}g-b--#{$namespace}4of5 {
+      width: 80%;
+    }
+  }
+  // ----- Six Parts ----- //
+  @if $g-columns >= 6 {
+    #{$g-selector}g-b--#{$namespace}1of6 {
+      width: 16.666%;
+    }
+    #{$g-selector}g-b--#{$namespace}2of6 {
+      @extend #{$g-selector}g-b--#{$namespace}1of3;
+    }
+    #{$g-selector}g-b--#{$namespace}3of6 {
+      @extend #{$g-selector}g-b--#{$namespace}1of2;
+    }
+    #{$g-selector}g-b--#{$namespace}4of6 {
+      @extend #{$g-selector}g-b--#{$namespace}2of3;
+    }
+    #{$g-selector}g-b--#{$namespace}5of6 {
+      width: 83.333%;
+    }
+  }
+  // ----- Eight Parts ----- //
+  @if $g-columns >= 8 {
+    #{$g-selector}g-b--#{$namespace}1of8 {
+      width: 12.5%;
+    }
+    #{$g-selector}g-b--#{$namespace}2of8 {
+      @extend #{$g-selector}g-b--#{$namespace}1of4;
+    }
+    #{$g-selector}g-b--#{$namespace}3of8 {
+      width: 37.5%;
+    }
+    #{$g-selector}g-b--#{$namespace}4of8 {
+      @extend #{$g-selector}g-b--#{$namespace}1of2;
+    }
+    #{$g-selector}g-b--#{$namespace}5of8 {
+      width: 62.5%;
+    }
+    #{$g-selector}g-b--#{$namespace}6of8 {
+      @extend #{$g-selector}g-b--#{$namespace}3of4;
+    }
+    #{$g-selector}g-b--#{$namespace}7of8 {
+      width: 87.5%;
+    }
+  }
+  // ----- Ten Parts ----- //
+  @if $g-columns >= 10 {
+    #{$g-selector}g-b--#{$namespace}1of10 {
+      width: 10%;
+    }
+    #{$g-selector}g-b--#{$namespace}2of10 {
+      @extend #{$g-selector}g-b--#{$namespace}1of5;
+    }
+    #{$g-selector}g-b--#{$namespace}3of10 {
+      width: 30%;
+    }
+    #{$g-selector}g-b--#{$namespace}4of10 {
+      @extend #{$g-selector}g-b--#{$namespace}2of5;
+    }
+    #{$g-selector}g-b--#{$namespace}5of10 {
+      @extend #{$g-selector}g-b--#{$namespace}1of2;
+    }
+    #{$g-selector}g-b--#{$namespace}6of10 {
+      @extend #{$g-selector}g-b--#{$namespace}3of5;
+    }
+    #{$g-selector}g-b--#{$namespace}7of10 {
+      width: 70%;
+    }
+    #{$g-selector}g-b--#{$namespace}8of10 {
+      @extend #{$g-selector}g-b--#{$namespace}4of5;
+    }
+    #{$g-selector}g-b--#{$namespace}9of10 {
+      width: 90%;
+    }
+  }
+  // ----- Twelve Parts ----- //
+  @if $g-columns >= 12 {
+    #{$g-selector}g-b--#{$namespace}1of12 {
+      width: 8.333%;
+    }
+    #{$g-selector}g-b--#{$namespace}2of12 {
+      @extend #{$g-selector}g-b--#{$namespace}1of6;
+    }
+    #{$g-selector}g-b--#{$namespace}3of12 {
+      @extend #{$g-selector}g-b--#{$namespace}1of4;
+    }
+    #{$g-selector}g-b--#{$namespace}4of12 {
+      @extend #{$g-selector}g-b--#{$namespace}1of3;
+    }
+    #{$g-selector}g-b--#{$namespace}5of12 {
+      width: 41.666%;
+    }
+    #{$g-selector}g-b--#{$namespace}6of12 {
+      @extend #{$g-selector}g-b--#{$namespace}1of2;
+    }
+    #{$g-selector}g-b--#{$namespace}7of12 {
+      width: 58.333%;
+    }
+    #{$g-selector}g-b--#{$namespace}8of12 {
+      @extend #{$g-selector}g-b--#{$namespace}2of3;
+    }
+    #{$g-selector}g-b--#{$namespace}9of12 {
+      @extend #{$g-selector}g-b--#{$namespace}3of4;
+    }
+    #{$g-selector}g-b--#{$namespace}10of12 {
+      @extend #{$g-selector}g-b--#{$namespace}5of6;
+    }
+    #{$g-selector}g-b--#{$namespace}11of12 {
+      width: 91.666%;
+    }
+  }
+}
+
+
+// -------------------------------------
+//   Push
+// -------------------------------------
+
+@mixin device-type-push($namespace: "") {
+  // ----- One Part ----- //
+  #{$g-selector}g-b--push--#{$namespace}1of1 {
+    margin-left: 100%;
+  }
+  // ----- Two Parts ----- //
+  #{$g-selector}g-b--push--#{$namespace}1of2 {
+    margin-left: 50%;
+  }
+  // ----- Three Parts ----- //
+  @if $g-columns >= 3 {
+    #{$g-selector}g-b--push--#{$namespace}1of3 {
+      margin-left: 33.333%;
+    }
+    #{$g-selector}g-b--push--#{$namespace}2of3 {
+      margin-left: 66.666%;
+    }
+  }
+  // ----- Four Parts ----- //
+  @if $g-columns >= 4 {
+    #{$g-selector}g-b--push--#{$namespace}1of4 {
+      margin-left: 25%;
+    }
+    #{$g-selector}g-b--push--#{$namespace}2of4 {
+      @extend #{$g-selector}g-b--push--#{$namespace}1of2;
+    }
+    #{$g-selector}g-b--push--#{$namespace}3of4 {
+      margin-left: 75%;
+    }
+  }
+  // ----- Five Parts ----- //
+  @if $g-columns >= 5 {
+    #{$g-selector}g-b--push--#{$namespace}1of5 {
+      margin-left: 20%;
+    }
+    #{$g-selector}g-b--push--#{$namespace}2of5 {
+      margin-left: 40%;
+    }
+    #{$g-selector}g-b--push--#{$namespace}3of5 {
+      margin-left: 60%;
+    }
+    #{$g-selector}g-b--push--#{$namespace}4of5 {
+      margin-left: 80%;
+    }
+  }
+  // ----- Six Parts ----- //
+  @if $g-columns >= 6 {
+    #{$g-selector}g-b--push--#{$namespace}1of6 {
+      margin-left: 16.666%;
+    }
+    #{$g-selector}g-b--push--#{$namespace}2of6 {
+      @extend #{$g-selector}g-b--push--#{$namespace}1of3;
+    }
+    #{$g-selector}g-b--push--#{$namespace}3of6 {
+      @extend #{$g-selector}g-b--push--#{$namespace}1of2;
+    }
+    #{$g-selector}g-b--push--#{$namespace}4of6 {
+      @extend #{$g-selector}g-b--push--#{$namespace}2of3;
+    }
+    #{$g-selector}g-b--push--#{$namespace}5of6 {
+      margin-left: 83.333%;
+    }
+  }
+  // ----- Eight Parts ----- //
+  @if $g-columns >= 8 {
+    #{$g-selector}g-b--push--#{$namespace}1of8 {
+      margin-left: 12.5%;
+    }
+    #{$g-selector}g-b--push--#{$namespace}2of8 {
+      @extend #{$g-selector}g-b--push--#{$namespace}1of4;
+    }
+    #{$g-selector}g-b--push--#{$namespace}3of8 {
+      margin-left: 37.5%;
+    }
+    #{$g-selector}g-b--push--#{$namespace}4of8 {
+      @extend #{$g-selector}g-b--push--#{$namespace}1of2;
+    }
+    #{$g-selector}g-b--push--#{$namespace}5of8 {
+      margin-left: 62.5%;
+    }
+    #{$g-selector}g-b--push--#{$namespace}6of8 {
+      @extend #{$g-selector}g-b--push--#{$namespace}3of4;
+    }
+    #{$g-selector}g-b--push--#{$namespace}7of8 {
+      margin-left: 87.5%;
+    }
+  }
+  // ----- Ten Parts ----- //
+  @if $g-columns >= 10 {
+    #{$g-selector}g-b--push--#{$namespace}1of10 {
+      margin-left: 10%;
+    }
+    #{$g-selector}g-b--push--#{$namespace}2of10 {
+      @extend #{$g-selector}g-b--push--#{$namespace}1of5;
+    }
+    #{$g-selector}g-b--push--#{$namespace}3of10 {
+      margin-left: 30%;
+    }
+    #{$g-selector}g-b--push--#{$namespace}4of10 {
+      @extend #{$g-selector}g-b--push--#{$namespace}2of5;
+    }
+    #{$g-selector}g-b--push--#{$namespace}5of10 {
+      @extend #{$g-selector}g-b--push--#{$namespace}1of2;
+    }
+    #{$g-selector}g-b--push--#{$namespace}6of10 {
+      @extend #{$g-selector}g-b--push--#{$namespace}3of5;
+    }
+    #{$g-selector}g-b--push--#{$namespace}7of10 {
+      margin-left: 70%;
+    }
+    #{$g-selector}g-b--push--#{$namespace}8of10 {
+      @extend #{$g-selector}g-b--push--#{$namespace}4of5;
+    }
+    #{$g-selector}g-b--push--#{$namespace}9of10 {
+      margin-left: 90%;
+    }
+  }
+  // ----- Twelve Parts ----- //
+  @if $g-columns >= 12 {
+    #{$g-selector}g-b--push--#{$namespace}1of12 {
+      margin-left: 8.333%;
+    }
+    #{$g-selector}g-b--push--#{$namespace}2of12 {
+      @extend #{$g-selector}g-b--push--#{$namespace}1of6;
+    }
+    #{$g-selector}g-b--push--#{$namespace}3of12 {
+      @extend #{$g-selector}g-b--push--#{$namespace}1of4;
+    }
+    #{$g-selector}g-b--push--#{$namespace}4of12 {
+      @extend #{$g-selector}g-b--push--#{$namespace}1of3;
+    }
+    #{$g-selector}g-b--push--#{$namespace}5of12 {
+      margin-left: 41.666%;
+    }
+    #{$g-selector}g-b--push--#{$namespace}6of12 {
+      @extend #{$g-selector}g-b--push--#{$namespace}1of2;
+    }
+    #{$g-selector}g-b--push--#{$namespace}7of12 {
+      margin-left: 58.333%;
+    }
+    #{$g-selector}g-b--push--#{$namespace}8of12 {
+      @extend #{$g-selector}g-b--push--#{$namespace}2of3;
+    }
+    #{$g-selector}g-b--push--#{$namespace}9of12 {
+      @extend #{$g-selector}g-b--push--#{$namespace}3of4;
+    }
+    #{$g-selector}g-b--push--#{$namespace}10of12 {
+      @extend #{$g-selector}g-b--push--#{$namespace}5of6;
+    }
+    #{$g-selector}g-b--push--#{$namespace}11of12 {
+      margin-left: 91.666%;
+    }
+  }
+}
+
+
+// -------------------------------------
+//   Pull
+// -------------------------------------
+
+@mixin device-type-pull($namespace: "") {
+  // ----- One Part ----- //
+  #{$g-selector}g-b--pull--#{$namespace}1of1 {
+    margin-right: 100%;
+  }
+  // ----- Two Parts ----- //
+  #{$g-selector}g-b--pull--#{$namespace}1of2 {
+    margin-right: 50%;
+  }
+  // ----- Three Parts ----- //
+  @if $g-columns >= 3 {
+    #{$g-selector}g-b--pull--#{$namespace}1of3 {
+      margin-right: 33.333%;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}2of3 {
+      margin-right: 66.666%;
+    }
+  }
+  // ----- Four Parts ----- //
+  @if $g-columns >= 4 {
+    #{$g-selector}g-b--pull--#{$namespace}1of4 {
+      margin-right: 25%;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}2of4 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}1of2;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}3of4 {
+      margin-right: 75%;
+    }
+  }
+  // ----- Five Parts ----- //
+  @if $g-columns >= 5 {
+    #{$g-selector}g-b--pull--#{$namespace}1of5 {
+      margin-right: 20%;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}2of5 {
+      margin-right: 40%;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}3of5 {
+      margin-right: 60%;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}4of5 {
+      margin-right: 80%;
+    }
+  }
+  // ----- Six Parts ----- //
+  @if $g-columns >= 6 {
+    #{$g-selector}g-b--pull--#{$namespace}1of6 {
+      margin-right: 16.666%;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}2of6 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}1of3;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}3of6 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}1of2;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}4of6 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}2of3;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}5of6 {
+      margin-right: 83.333%;
+    }
+  }
+  // ----- Eight Parts ----- //
+  @if $g-columns >= 8 {
+    #{$g-selector}g-b--pull--#{$namespace}1of8 {
+      margin-right: 12.5%;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}2of8 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}1of4;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}3of8 {
+      margin-right: 37.5%;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}4of8 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}1of2;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}5of8 {
+      margin-right: 62.5%;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}6of8 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}3of4;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}7of8 {
+      margin-right: 87.5%;
+    }
+  }
+  // ----- Ten Parts ----- //
+  @if $g-columns >= 10 {
+    #{$g-selector}g-b--pull--#{$namespace}1of10 {
+      margin-right: 10%;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}2of10 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}1of5;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}3of10 {
+      margin-right: 30%;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}4of10 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}2of5;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}5of10 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}1of2;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}6of10 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}3of5;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}7of10 {
+      margin-right: 70%;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}8of10 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}4of5;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}9of10 {
+      margin-right: 90%;
+    }
+  }
+  // ----- Twelve Parts ----- //
+  @if $g-columns >= 12 {
+    #{$g-selector}g-b--pull--#{$namespace}1of12 {
+      margin-right: 8.333%;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}2of12 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}1of6;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}3of12 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}1of4;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}4of12 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}1of3;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}5of12 {
+      margin-right: 41.666%;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}6of12 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}1of2;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}7of12 {
+      margin-right: 58.333%;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}8of12 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}2of3;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}9of12 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}3of4;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}10of12 {
+      @extend #{$g-selector}g-b--pull--#{$namespace}5of6;
+    }
+    #{$g-selector}g-b--pull--#{$namespace}11of12 {
+      margin-right: 91.666%;
+    }
+  }
+}
+
+
+// -------------------------------------
+//   Creation
+// -------------------------------------
+
+@include device-type;
+
+@each $device in $g-defaults {
+  @media screen and (min-width: nth($device, 2)) {
+    @include device-type("#{nth($device, 1)}");
+  }
+}
+
+@include device-type-push;
+
+@each $device in $g-defaults {
+  @media screen and (min-width: nth($device, 2)) {
+    @include device-type-push("#{nth($device, 1)}");
+  }
+}
+
+@include device-type-pull;
+
+@each $device in $g-defaults {
+  @media screen and (min-width: nth($device, 2)) {
+    @include device-type-pull("#{nth($device, 1)}");
   }
 }

@@ -17,7 +17,18 @@
 // *************************************
 
 .page {
-  @include susy-breakpoint($desktop, $susy-desktop) {
-    margin-left: 20px;
+  margin: 0 auto;
+  max-width: 90%;
+
+  @include media($mobile) {
+    max-width: $grid-mobile;
+  }
+
+  @include media($tablet) {
+    max-width: $grid-tablet;
+  }
+
+  @include media($desktop) {
+    max-width: $grid-desktop;
   }
 }

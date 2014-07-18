@@ -47,42 +47,119 @@ $c-text: #444444;
 //   Base
 // -------------------------------------
 
-// Scaling Variables
-$golden:         1.618;
-// $minor-second:     1.067;
-// $major-second:     1.125;
-// $minor-third:      1.2;
-$major-third:    1.25;
-$perfect-fourth: 1.333;
-// $augmented-fourth: 1.414;
-$perfect-fifth:  1.5;
-// $minor-sixth:      1.6;
-// $major-sixth:      1.667;
-// $minor-seventh:    1.778;
-// $major-seventh:    1.875;
-// $octave:           2;
-// $major-tenth:      2.5;
-// $major-eleventh:   2.667;
-// $major-twelfth:    3;
-// $double-octave:    4;
-
 // ----- Typography ----- //
 
-$base-font-family-serif:   Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+$base-font-family:         Cambria, Georgia, serif;
 $base-font-family-heading: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$base-font-family:         "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-family-serif:   Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
 
-$ratio:             $golden;
 $base-font-size:    16px;
-$base-line-height:  ceil(modular-scale($base-font-size, 1, $ratio));
+$base-line-height:  25px;
 // $base-font-unit: rem;
 
-$base-font-size-h1: modular-scale($base-font-size, 3, $ratio);
-$base-font-size-h2: modular-scale($base-font-size, 2, $ratio);
-$base-font-size-h3: modular-scale($base-font-size, 1, $ratio);
-$base-font-size-h4: modular-scale($base-font-size, 1, $ratio);
-$base-font-size-h5: modular-scale($base-font-size, 0, $ratio);
-$base-font-size-h6: modular-scale($base-font-size, -1, $ratio);
+$bodytype: (
+  font-family $base-font-family,
+  regular 400,
+  bold 600,
+  italic italic,
+  cap-height 0.70
+);
+
+$headingtype: (
+  font-family $base-font-family-heading,
+  regular 400,
+  bold 600,
+  cap-height 0.70
+);
+
+$monospacetype: (
+  font-family $base-font-family-serif,
+  regular 400,
+  cap-height 0.68
+);
+
+
+// Root font-sizes for each breakpoint. Set to half desired line-height of body text.
+// ! Make sure to have as many sizes as breakpoints above.
+$rootsizes: (
+  rootsize-0 13,   // 24px line-height body text
+  rootsize-1 14,   // 28px line-height body text
+  rootsize-2 15,   // 30px line-height body text
+  rootsize-3 17,   // 34px line-height body text
+  rootsize-4 18    // 36px line-height body text
+);
+
+// Here are some cap-height sizes to get you started:
+// Georgia: 0.66, Times / Times New Roman: 0.65, Palatino: 0.52
+// Lucida Grande: 0.72, Helvetica: 0.65, Verdana: 0.76, Tahoma: 0.76
+
+// Modular scale
+// ---------------------------------------
+
+// Setting responsive modular-scales. Use appropriate scales for viewport sizes.
+$modular-scale: (
+  // Major Third http://modularscale.com/scale/?px1=16&px2=28&ra1=1.25&ra2=0
+  scale-0 (
+    alpha   28.0,
+    beta    25.0,
+    gamma   22.4,
+    delta   20.0,
+    epsilon 17.9,
+    zeta    16.0,
+    eta     14.3,
+    theta   12.8,
+    iota    11.5
+  ),
+  // Major Third http://modularscale.com/scale/?px1=17&px2=30&ra1=1.25&ra2=0
+  scale-1 (
+    alpha   30.0,
+    beta    26.6,
+    gamma   24.0,
+    delta   21.3,
+    epsilon 19.2,
+    zeta    17.0,
+    eta     15.3,
+    theta   13.6,
+    iota    12.8
+  ),
+  // Major Third http://modularscale.com/scale/?px1=18&px2=32&ra1=1.25&ra2=0
+  scale-2 (
+    alpha   32.0,
+    beta    28.1,
+    gamma   25.6,
+    delta   22.5,
+    epsilon 20.5,
+    zeta    18.0,
+    eta     16.3,
+    theta   14.4,
+    iota    13.1
+  ),
+  // Perfect Fourth http://modularscale.com/scale/?px1=20&px2=40&ra1=1.333&ra2=0
+  scale-3 (
+    alpha   40.0,
+    beta    35.5,
+    gamma   30.0,
+    delta   26.7,
+    epsilon 22.5,
+    zeta    20.0,
+    eta     16.9,
+    theta   15.0,
+    iota    12.7
+  ),
+  // Aug. Fourth http://modularscale.com/scale/?px1=22&px2=50&ra1=1.414&ra2=0
+  scale-4 (
+    alpha   50.0,
+    beta    43.9,
+    gamma   35.3,
+    delta   31.1,
+    epsilon 25.0,
+    zeta    22.0,
+    eta     17.6,
+    theta   15.6,
+    iota    12.5
+  )
+);
+
 
 // ----- Borders & Box Shadow ----- //
 
@@ -115,11 +192,35 @@ $palm:    320px;
 $mobile:  568px;
 $tablet:  768px;
 $desktop: 1024px;
-// $imac: em(1440px);
+$imac:    1440px;
 
-$between-mobile-and-tablet:  $mobile and max-width $tablet;
-$between-mobile-and-desktop: $mobile and max-width $desktop;
-$between-tablet-and-desktop: $tablet and max-width $desktop;
+/* \$between-mobile-and-tablet:  \$mobile and max-width \$tablet; */
+/* \$between-mobile-and-desktop: \$mobile and max-width \$desktop; */
+/* \$between-tablet-and-desktop: \$tablet and max-width \$desktop; */
+
+// Breakpoint sizes in ems. Add more values here to add more breakpoints.
+// Change names if you prefer, it wont break the mixin as long as they are strings not just numbers.
+// Note: not relative to root font-size.
+
+$breakpoints: (
+  break-0 0,                      // 0px       Mobile first
+  break-1 strip-units($mobile),   // 568px   ~ Small tablet up
+  break-2 strip-units($tablet),   // 768px   ~ Large tablet up
+  break-3 strip-units($desktop),  // 1024px  ~ Desktop up
+  break-4 strip-units($imac)      // 1440px  ~ Large desktop up
+);
+
+
+// Control the line-length with max-width values for the container.
+// Aim for 75–100 characters a line when possible, at smaller sizes type size is more important.
+// ! Make sure to have as many widths as breakpoints above.
+$maxwidths: (
+  maxwidth-0 500,  // 500px wide
+  maxwidth-1 550,  // 550px wide
+  maxwidth-2 600,  // 600px wide
+  maxwidth-3 680,  // 680px wide
+  maxwidth-4 750   // 750px wide
+);
 
 // -------------------------------------
 //   Structures

@@ -6,20 +6,28 @@
 // *************************************
 
 html {
+  @include rootsize;
   background: $c-background;
   color: $c-text;
   font-family: $base-font-family;
-  font-size: ($base-font-size / 16px) + em;
-  line-height: strip-units(em($base-line-height));
-
-  @if $debug == true {
-    $base-baseline-size: strip-units($base-line-height);
-    background-image: url(http://basehold.it/i/#{$base-baseline-size});
-  }
 }
 
 body {
-  font-size: 100%;
+  @include fontsize(zeta, all);
+  font-family: unquote(map-get($bodytype, font-family));
+  font-weight: map-get($bodytype, regular);
+  line-height: 2rem;
+
+  @if $debug == true {
+    background: linear-gradient(
+      to bottom,
+      rgba(50, 50, 50, .1) 0,
+      rgba(50, 50, 50, .2) 1px,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0) 2px
+    );
+    background-size: 100% 1rem;
+  }
 }
 
 // -------------------------------------
@@ -28,8 +36,12 @@ body {
 
 ul,
 ol {
-  @extend %type-vertical-rhythm;
-  @include sp(margin-left);
+  @include baseline(zeta, $bodytype, 2, 2, all);
+}
+
+li {
+  font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  margin-left: 2rem;
 }
 
 li > ul,
@@ -38,30 +50,20 @@ li > ol {
 }
 
 p {
-  @extend %type-vertical-rhythm;
-}
-
-address {
-  @extend %type-vertical-rhythm;
-}
-
-pre {
-  @extend %type-vertical-rhythm;
+  @include baseline($fontsize: zeta, $font: $bodytype, $lineheight: 2, $below: 2, $breakpoint: all);
+  font-feature-settings: 'kern' 1, 'onum' 1, 'liga' 1;
+  margin-top: 0;
 }
 
 blockquote {
-  @extend %type-vertical-rhythm;
-  font-family: $base-font-family-serif;
-  font-style: italic;
-  @include fs($base-font-size-h3, 1.5);
-  @include sp(margin-top);
-  @include sp(margin-bottom, 2.5);
-  @include sp(padding-left, 2);
-  @include sp(padding-right, 2);
-}
+  margin: 0;
 
-table {
-  @extend %type-vertical-rhythm;
+  p {
+    @include baseline(zeta, $bodytype, 2, 3, all);
+    font-style: map-get($bodytype, italic);
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 th,
@@ -77,36 +79,35 @@ h3,
 h4,
 h5,
 h6 {
-  @extend %type-vertical-rhythm;
-  font-family: $base-font-family-heading;
-  font-weight: bold;
+  font-family: unquote(map-get($headingtype, font-family));
+  font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
+  font-style: normal;
+  font-weight: map-get($headingtype, bold);
+  margin-top: 0;
 }
 
 h1 {
-  @include fs($base-font-size-h1);
+  @include sp($fontsize: alpha, $font: $headingtype, $lineheight: 3, $below: 1, $breakpoint: all);
 }
 
 h2 {
-  @include fs($base-font-size-h2);
+  @include sp(beta, $headingtype, 3, 1, all);
 }
 
 h3 {
-  @include fs($base-font-size-h3, 1.5);
-  @include sp(margin-bottom, 1.5);
+  @include sp(gamma, $headingtype, 3, 1, all);
 }
 
 h4 {
-  @include fs($base-font-size-h4, 1.5);
-  @include sp(margin-bottom, 1.5);
+  @include sp(delta, $headingtype, 2, 0, all);
 }
 
 h5 {
-  @include fs($base-font-size-h5);
+  @include sp(epsilon, $headingtype, 2, 0, all);
 }
 
 h6 {
-  @include fs($base-font-size-h5);
-  // @include sp(margin-bottom, 1.5);
+  @include sp(zeta, $headingtype, 2, 0, all);
 }
 
 // -------------------------------------

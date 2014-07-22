@@ -3,9 +3,9 @@ browserSync = require("browser-sync")
 gulp        = require("gulp")
 
 gulp.task "browserSync", ["build"], ->
-  browserSync.init ["build/**"],
+  browserSync.init ["public/**"],
     server:
-      baseDir: "build"
+      baseDir: "public"
 
   return
 

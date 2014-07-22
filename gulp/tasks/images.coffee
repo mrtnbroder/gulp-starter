@@ -4,7 +4,7 @@ gulp     = require("gulp")
 imagemin = require("gulp-imagemin")
 
 gulp.task "images", ->
-  dest = "./build/images"
+  dest = "./public/images"
   # Ignore unchanged files
   # Optimize
   gulp.src("./src/images/**")

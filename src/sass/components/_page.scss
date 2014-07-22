@@ -20,15 +20,15 @@
   margin: 0 auto;
   max-width: 90%;
 
-  @include media($mobile) {
+  @include from('mobile') {
     max-width: $grid-mobile;
   }
 
-  @include media($tablet) {
+  @include from('tablet') {
     max-width: $grid-tablet;
   }
 
-  @include media($desktop) {
+  @include from('desktop') {
     max-width: $grid-desktop;
   }
 }

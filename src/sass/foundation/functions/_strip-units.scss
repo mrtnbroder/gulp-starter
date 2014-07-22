@@ -1,0 +1,6 @@
+
+// remove units from values
+
+@function strip-units($val) {
+  @return ($val / ($val * 0 + 1));
+}

@@ -3,6 +3,7 @@
 sass         = require("gulp-sass")
 autoprefixer = require("gulp-autoprefixer")
 csso         = require("gulp-csso")
+size         = require("gulp-size")
 gulp         = require("gulp")
 handleErrors = require("../util/handleErrors")
 
@@ -21,3 +22,4 @@ gulp.task "sass", ->
     ]))
     .pipe(csso())
     .pipe(gulp.dest(dest))
+    .pipe(size())

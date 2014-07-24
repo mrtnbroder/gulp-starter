@@ -59,7 +59,7 @@ blockquote {
   margin: 0;
 
   p {
-    @include baseline(zeta, $bodytype, 2, 3, all);
+    @include sp(delta, $bodytype, 3, 3, all);
     font-style: map-get($bodytype, italic);
     padding-left: 1rem;
     padding-right: 1rem;

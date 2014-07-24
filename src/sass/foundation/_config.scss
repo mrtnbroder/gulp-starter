@@ -85,7 +85,7 @@ $rootsizes: (
   rootsize-0 13,   // 24px line-height body text
   rootsize-1 14,   // 28px line-height body text
   rootsize-2 15,   // 30px line-height body text
-  rootsize-3 16,   // 34px line-height body text
+  rootsize-3 16,   // 32px line-height body text
   rootsize-4 18    // 36px line-height body text
 );
 
@@ -126,8 +126,8 @@ $base-box-shadow:    0 2px 0 rgba($c-text, .25);
 // ----- Grid ----- //
 
 $grid-palm:    300px;
-$grid-mobile:  480px;
-$grid-tablet:  700px;
+$grid-mobile:  400px;
+$grid-tablet:  660px;
 $grid-desktop: 960px;
 
 $grid-gutter:         20px;
@@ -138,26 +138,23 @@ $grid-gutter-desktop: 24px;
 
 // ----- Breakpoints ----- //
 
-$palm:    320px;
-$mobile:  568px;
-$tablet:  768px;
-$desktop: 1024px;
-$imac:    1440px;
-
-/* \$between-mobile-and-tablet:  \$mobile and max-width \$tablet; */
-/* \$between-mobile-and-desktop: \$mobile and max-width \$desktop; */
-/* \$between-tablet-and-desktop: \$tablet and max-width \$desktop; */
+// Provide pixel values
+$mobile:     440px;
+$tablet:     740px;
+$desktop:    1000px;
+$widescreen: 1400px;
 
 // Breakpoint sizes in ems. Add more values here to add more breakpoints.
 // Change names if you prefer, it wont break the mixin as long as they are strings not just numbers.
+// Do not change the ordner though, and always add a breakpoint
 // Note: not relative to root font-size.
 
 $breakpoints: (
-  break-0 0,                      // 0px       Mobile first
-  break-1 strip-units($mobile),   // 568px   ~ Small tablet up
-  break-2 strip-units($tablet),   // 768px   ~ Large tablet up
-  break-3 strip-units($desktop),  // 1024px  ~ Desktop up
-  break-4 strip-units($imac)      // 1440px  ~ Large desktop up
+  break-zero 0px,     // 0px       Mobile first
+  mobile     440px,   // 440px   ~ Small Tablet or Landscape Mobile
+  tablet     700px,   // 700px   ~ Tablet
+  desktop    1000px,  // 1000px  ~ Desktop
+  widescreen 1400px   // 1400px  ~ Large desktop up
 );
 
 

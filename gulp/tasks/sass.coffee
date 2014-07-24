@@ -8,7 +8,7 @@ handleErrors = require("../util/handleErrors")
 
 gulp.task "sass", ->
 
-  dest = "./build"
+  dest = "./public"
 
   gulp.src("./src/sass/app.{scss,sass}")
     .pipe(sass(

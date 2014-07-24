@@ -22,14 +22,14 @@
 // -------------------------------------
 
 $g-columns: 12 !default;
-$g-defaults: "m" $mobile $grid-gutter-mobile, "t" $tablet $grid-gutter-tablet, "d" $desktop $grid-gutter-desktop !default;
+$g-defaults: 'm' $mobile $grid-gutter-mobile, 't' $tablet $grid-gutter-tablet, 'd' $desktop $grid-gutter-desktop !default;
 $g-silent: false !default;
 
 // -------------------------------------
 //   Selector Type
 // -------------------------------------
 
-$g-selector: if($g-silent, unquote("%"), unquote("."));
+$g-selector: if($g-silent, unquote('%'), unquote('.'));
 
 // -------------------------------------
 //   Base
@@ -82,7 +82,7 @@ $g-selector: if($g-silent, unquote("%"), unquote("."));
 //   Setup
 // -------------------------------------
 
-@mixin device-type($namespace: "") {
+@mixin device-type($namespace: '') {
   // ----- One Part ----- //
   #{$g-selector}g-b--#{$namespace}1of1 {
     width: 100%;
@@ -242,7 +242,7 @@ $g-selector: if($g-silent, unquote("%"), unquote("."));
 //   Push
 // -------------------------------------
 
-@mixin device-type-push($namespace: "") {
+@mixin device-type-push($namespace: '') {
   // ----- One Part ----- //
   #{$g-selector}g-b--push--#{$namespace}1of1 {
     margin-left: 100%;
@@ -402,7 +402,7 @@ $g-selector: if($g-silent, unquote("%"), unquote("."));
 //   Pull
 // -------------------------------------
 
-@mixin device-type-pull($namespace: "") {
+@mixin device-type-pull($namespace: '') {
   // ----- One Part ----- //
   #{$g-selector}g-b--pull--#{$namespace}1of1 {
     margin-right: 100%;
@@ -563,25 +563,13 @@ $g-selector: if($g-silent, unquote("%"), unquote("."));
 // -------------------------------------
 
 @include device-type;
-
-@each $device in $g-defaults {
-  @media screen and (min-width: nth($device, 2)) {
-    @include device-type("#{nth($device, 1)}");
-  }
-}
-
 @include device-type-push;
-
-@each $device in $g-defaults {
-  @media screen and (min-width: nth($device, 2)) {
-    @include device-type-push("#{nth($device, 1)}");
-  }
-}
-
 @include device-type-pull;
 
 @each $device in $g-defaults {
   @media screen and (min-width: nth($device, 2)) {
+    @include device-type("#{nth($device, 1)}");
+    @include device-type-push("#{nth($device, 1)}");
     @include device-type-pull("#{nth($device, 1)}");
   }
 }

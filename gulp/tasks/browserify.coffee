@@ -44,7 +44,7 @@ gulp.task "browserify", ->
       # desired output filename here.
       .pipe(source("app.js"))
       # Specify the output destination
-      .pipe(gulp.dest("./build/"))
+      .pipe(gulp.dest("./public/"))
       # Log when bundling completes!
       .on "end", bundleLogger.end
 

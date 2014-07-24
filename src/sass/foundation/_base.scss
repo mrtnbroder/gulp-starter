@@ -99,7 +99,7 @@ h3 {
 }
 
 h4 {
-  @include sp(delta, $headingtype, 2, 0, all);
+  @include sp(delta, $headingtype, 2, 1, all);
 }
 
 h5 {

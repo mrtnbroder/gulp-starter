@@ -24,7 +24,7 @@ gulp.task "browserify", ->
     # insertGlobals: true
     debug: true
     # Specify the entry point of your app
-    entries: ["./src/javascript/app.coffee"]
+    entries: ["./src/coffeescript/app.coffee"]
     # Add file extentions to make optional in your requires
     extensions: [".coffee"]
   )

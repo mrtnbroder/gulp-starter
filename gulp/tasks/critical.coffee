@@ -1,9 +1,8 @@
 
 critical     = require('critical')
 gulp         = require('gulp')
-# handleErrors = require('../util/handleErrors')
 
-gulp.task 'critical', ['build'], ->
+gulp.task 'critical', ->
 
   dest = './public'
 

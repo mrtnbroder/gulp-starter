@@ -9,10 +9,13 @@
 #
 #
 
+gulp         = require("gulp")
+gulpif       = require("gulp-if")
+uglify       = require("gulp-uglify")
+streamify    = require("gulp-streamify")
 browserify   = require("browserify")
 watchify     = require("watchify")
 bundleLogger = require("../util/bundleLogger")
-gulp         = require("gulp")
 handleErrors = require("../util/handleErrors")
 source       = require("vinyl-source-stream")
 
@@ -43,6 +46,7 @@ gulp.task "browserify", ->
       # stream gulp compatible. Specifiy the
       # desired output filename here.
       .pipe(source("app.js"))
+      .pipe(gulpif(global.isProduction, streamify(uglify())))
       # Specify the output destination
       .pipe(gulp.dest("./public/"))
       # Log when bundling completes!

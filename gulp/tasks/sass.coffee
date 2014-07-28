@@ -1,11 +1,12 @@
 
 # compass    = require("gulp-compass")
+gulp         = require("gulp")
 sass         = require("gulp-sass")
 autoprefixer = require("gulp-autoprefixer")
 cmq          = require("gulp-combine-media-queries")
 csso         = require("gulp-csso")
 size         = require("gulp-size")
-gulp         = require("gulp")
+gulpif       = require("gulp-if")
 handleErrors = require("../util/handleErrors")
 
 gulp.task "sass", ->
@@ -21,7 +22,7 @@ gulp.task "sass", ->
     .pipe(autoprefixer([
       "> 1%"
     ]))
-    .pipe(cmq(log: true))
+    .pipe(gulpif( global.isProduction, cmq(log: true) ))
     .pipe(csso())
     .pipe(gulp.dest(dest))
     .pipe(size())

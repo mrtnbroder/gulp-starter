@@ -1,9 +1,16 @@
 
-gulp = require("gulp")
+gulp     = require("gulp")
+sequence = require("run-sequence")
 
-gulp.task "build", [
+tasks = [
   "browserify"
   "sass"
   "images"
   "copy"
 ]
+
+if global.isProduction
+  gulp.task "build", ->
+    sequence tasks, "uncss"
+else
+  gulp.task "build", tasks

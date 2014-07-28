@@ -1,6 +1,5 @@
+"use strict"
 
-jQuery = require "jquery"
-
-do ($ = jQuery, window, document) ->
+do (window, document) ->
 
   console.log "Hello from app.js!"

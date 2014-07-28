@@ -1,7 +1,8 @@
 
-# compass      = require("gulp-compass")
+# compass    = require("gulp-compass")
 sass         = require("gulp-sass")
 autoprefixer = require("gulp-autoprefixer")
+cmq          = require("gulp-combine-media-queries")
 csso         = require("gulp-csso")
 size         = require("gulp-size")
 gulp         = require("gulp")
@@ -20,6 +21,7 @@ gulp.task "sass", ->
     .pipe(autoprefixer([
       "> 1%"
     ]))
+    .pipe(cmq(log: true))
     .pipe(csso())
     .pipe(gulp.dest(dest))
     .pipe(size())

@@ -22,7 +22,7 @@
 // -------------------------------------
 
 $g-columns: 12 !default;
-$g-defaults: 'm' em($mobile) $grid-gutter-mobile, 't' em($tablet) $grid-gutter-tablet, 'd' em($desktop) $grid-gutter-desktop !default;
+$g-defaults: 'm' 'mobile' $grid-gutter-mobile, 't' 'tablet' $grid-gutter-tablet, 'd' 'desktop' $grid-gutter-desktop !default;
 $g-silent: false !default;
 
 // -------------------------------------
@@ -59,7 +59,7 @@ $g-selector: if($g-silent, unquote('%'), unquote('.'));
 @include grid-type($grid-gutter);
 
 @each $device in $g-defaults {
-  @media screen and (min-width: nth($device, 2)) {
+  @include from(nth($device, 2)) {
     @include grid-type(nth($device, 3));
   }
 }
@@ -76,6 +76,10 @@ $g-selector: if($g-silent, unquote('%'), unquote('.'));
   display: block;
   float: none;
   margin: 0 auto;
+}
+
+#{$g-selector}g-b--right {
+  float: right;
 }
 
 // -------------------------------------
@@ -567,7 +571,7 @@ $g-selector: if($g-silent, unquote('%'), unquote('.'));
 @include device-type-pull;
 
 @each $device in $g-defaults {
-  @media screen and (min-width: nth($device, 2)) {
+  @include from(nth($device, 2)) {
     @include device-type("#{nth($device, 1)}");
     @include device-type-push("#{nth($device, 1)}");
     @include device-type-pull("#{nth($device, 1)}");

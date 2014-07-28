@@ -151,10 +151,10 @@ $widescreen: 1400px;
 
 $breakpoints: (
   break-zero 0px,     // 0px       Mobile first
-  mobile     440px,   // 440px   ~ Small Tablet or Landscape Mobile
-  tablet     700px,   // 700px   ~ Tablet
-  desktop    1000px,  // 1000px  ~ Desktop
-  widescreen 1400px   // 1400px  ~ Large desktop up
+  mobile     $mobile,   // 440px   ~ Small Tablet or Landscape Mobile
+  tablet     $tablet,   // 700px   ~ Tablet
+  desktop    $desktop,  // 1000px  ~ Desktop
+  widescreen $widescreen   // 1400px  ~ Large desktop up
 );
 
 

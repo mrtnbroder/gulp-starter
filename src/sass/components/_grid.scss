@@ -22,7 +22,7 @@
 // -------------------------------------
 
 $g-columns: 12 !default;
-$g-defaults: 'm' $mobile $grid-gutter-mobile, 't' $tablet $grid-gutter-tablet, 'd' $desktop $grid-gutter-desktop !default;
+$g-defaults: 'm' em($mobile) $grid-gutter-mobile, 't' em($tablet) $grid-gutter-tablet, 'd' em($desktop) $grid-gutter-desktop !default;
 $g-silent: false !default;
 
 // -------------------------------------

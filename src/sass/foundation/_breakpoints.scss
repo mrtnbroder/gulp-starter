@@ -36,7 +36,7 @@ $breakpoints-use-ems: true;
     $e: nth($list, $i);
 
     @if type-of($e) == list {
-      $result: $result#{to-string($e, $glue, true)};
+      $result: $result#{list-to-string($e, $glue, true)};
     }
 
     @else {
@@ -134,7 +134,7 @@ $breakpoints-use-ems: true;
   }
 
   // called "at($query)"
-  @if $breakpoint-key-left == $breakpoint-key-right {
+  @if $breakpoint-key-left == $breakpoint-key-right and index($breakpoints-keys, $breakpoint-key-right) != $breakpoints-length {
     $context: append($context,at($breakpoint-key-left), comma);
     $context: append($context,next($breakpoint-key-left,$overlap-correction:true),comma);
   }

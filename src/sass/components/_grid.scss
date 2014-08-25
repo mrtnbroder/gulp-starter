@@ -35,24 +35,33 @@ $g-selector: if($g-silent, unquote('%'), unquote('.'));
 //   Base
 // -------------------------------------
 
+
+#{$g-selector}g {
+  display: block;
+  &:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+
+#{$g-selector}g-b {
+  float: left;
+  margin: 0;
+  width: 100%;
+}
+
+
 @mixin grid-type( $gutter ) {
   #{$g-selector}g {
-    display: block;
     margin-left: -($gutter / 2);
     margin-right: -($gutter / 2);
-    &:after {
-      clear: both;
-      content: '';
-      display: table;
-    }
   }
 
   #{$g-selector}g-b {
-    float: left;
-    margin: 0;
     padding-left: $gutter / 2;
     padding-right: $gutter / 2;
-    width: 100%;
   }
 }
 

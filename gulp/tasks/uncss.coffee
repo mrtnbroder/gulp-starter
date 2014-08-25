@@ -1,7 +1,7 @@
 
 # compass    = require("gulp-compass")
 gulp         = require("gulp")
-uncss         = require("gulp-uncss")
+uncss        = require("gulp-uncss")
 size         = require("gulp-size")
 gulpif       = require("gulp-if")
 handleErrors = require("../util/handleErrors")

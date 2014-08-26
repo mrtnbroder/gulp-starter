@@ -16,7 +16,8 @@ Desktop.ini
 
 ### Project Specific ##
 public
-flightplan
+flightplan.js
+flightplan.coffee
 
 ### SASS ###
 

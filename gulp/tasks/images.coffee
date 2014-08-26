@@ -5,6 +5,7 @@ gulpif   = require("gulp-if")
 imagemin = require("gulp-imagemin")
 
 gulp.task "images", ->
+
   dest = "./public/images"
 
   # Ignore unchanged files
@@ -16,7 +17,7 @@ gulp.task "images", ->
         optimizationLevel: 3
         progressive: true
         interlaced: true
-        silent: true
+        silent: false
       )
     ))
     .pipe gulp.dest(dest)

@@ -11,6 +11,7 @@ tasks = [
 
 if global.isProduction
   gulp.task "build", ->
-    sequence tasks, "uncss"
+    sequence tasks, "html", "uncss", "htmlminify"
 else
+  tasks.push "html"
   gulp.task "build", tasks

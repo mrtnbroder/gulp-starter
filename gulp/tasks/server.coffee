@@ -1,7 +1,7 @@
 
 gulp = require("gulp")
 
-gulp.task "watch", [
+gulp.task "server", [
   "setWatch"
   "browserSync"
 ], ->

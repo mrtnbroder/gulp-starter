@@ -1,12 +1,14 @@
+
 Backbone   = require 'backbone'
-Backbone.$ = jQuery
+Backbone.$ = require 'backbone.native'
+_          = require 'underscore'
 
 module.exports = Backbone.View.extend
 
   template: require '../views/example'
-
-  initialize: ->
-    @render()
+  el: "#main"
+  # initialize: ->
+  #   @render()
 
   render: ->
     @$el.html @template

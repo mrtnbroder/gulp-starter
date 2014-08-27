@@ -5,8 +5,8 @@ module.exports = Backbone.View.extend
 
   template: require '../views/example'
 
-  initialize: ->
-    @render()
+  # initialize: ->
+  #   @render()
 
   render: ->
     @$el.html @template

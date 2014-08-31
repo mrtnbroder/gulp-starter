@@ -1,8 +1,13 @@
+
 "use strict"
+
+angular = require 'angular'
 
 do (window, document) ->
 
-  Example = require './controller/example'
-  example = new Example(el: 'main')
+  App = angular.module 'app', [
+    require 'angular-ui-router'
+  ]
 
+  console.log App
   console.log "Hello from app.js!"

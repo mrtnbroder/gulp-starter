@@ -3,7 +3,7 @@ gulp     = require("gulp")
 sequence = require("run-sequence")
 
 tasks = [
-  "browserify"
+  "webpack"
   "sass"
   "images"
   "copy"

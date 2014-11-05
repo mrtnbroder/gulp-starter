@@ -58,35 +58,35 @@ $base-line-height:  25px;
 // $base-font-unit: rem;
 
 $bodytype: (
-  font-family $base-font-family,
-  regular 400,
-  bold 600,
-  italic italic,
-  cap-height .68
+  font-family: $base-font-family,
+  regular: 400,
+  bold: 600,
+  italic: italic,
+  cap-height: .68
 );
 
 $headingtype: (
-  font-family $base-font-family-heading,
-  regular 400,
-  bold 600,
-  cap-height .70
+  font-family: $base-font-family-heading,
+  regular: 400,
+  bold: 600,
+  cap-height: .70
 );
 
 $monospacetype: (
-  font-family $base-font-family-serif,
-  regular 400,
-  cap-height .68
+  font-family: $base-font-family-serif,
+  regular: 400,
+  cap-height: .68
 );
 
 
 // Root font-sizes for each breakpoint. Set to half desired line-height of body text.
 // ! Make sure to have as many sizes as breakpoints above.
 $rootsizes: (
-  rootsize-0 13,   // 24px line-height body text
-  rootsize-1 14,   // 28px line-height body text
-  rootsize-2 15,   // 30px line-height body text
-  rootsize-3 16,   // 32px line-height body text
-  rootsize-4 18    // 36px line-height body text
+  rootsize-0: 13,   // 24px line-height body text
+  rootsize-1: 14,   // 28px line-height body text
+  rootsize-2: 15,   // 30px line-height body text
+  rootsize-3: 16,   // 32px line-height body text
+  rootsize-4: 18    // 36px line-height body text
 );
 
 // Here are some cap-height sizes to get you started:
@@ -99,15 +99,15 @@ $rootsizes: (
 // Setting responsive modular-scales. Use appropriate scales for viewport sizes.
 $modular-scale: (
   // Major Third http://modularscale.com/scale/?px1=16&px2=28&ra1=1.25&ra2=0
-  scale-0 scale-range(16, 1.25, 28, -3, -2),
+  scale-0: scale-range(16, 1.25, 28, -3, -2),
   // Major Third http://modularscale.com/scale/?px1=17&px2=30&ra1=1.25&ra2=0
-  scale-1 scale-range(17, 1.25, 30, -3, -2),
+  scale-1: scale-range(17, 1.25, 30, -3, -2),
   // Major Third http://modularscale.com/scale/?px1=18&px2=32&ra1=1.25&ra2=0
-  scale-2 scale-range(18, 1.25, 32, -3, -2),
+  scale-2: scale-range(18, 1.25, 32, -3, -2),
   // Perfect Fourth http://modularscale.com/scale/?px1=16&px2=32&ra1=1.333&ra2=0
-  scale-3 scale-range(16, 1.618, 32, -3, -1),
+  scale-3: scale-range(16, 1.618, 32, -3, -1),
   // Aug. Fourth http://modularscale.com/scale/?px1=22&px2=50&ra1=1.414&ra2=0
-  scale-4 scale-range(22, 1.414, 50, -3, -2)
+  scale-4: scale-range(22, 1.414, 50, -3, -2)
 );
 
 
@@ -150,11 +150,11 @@ $widescreen: 1400px;
 // Note: not relative to root font-size.
 
 $breakpoints: (
-  break-zero 0px,     // 0px       Mobile first
-  mobile     $mobile,   // 440px   ~ Small Tablet or Landscape Mobile
-  tablet     $tablet,   // 700px   ~ Tablet
-  desktop    $desktop,  // 1000px  ~ Desktop
-  widescreen $widescreen   // 1400px  ~ Large desktop up
+  break-zero: 0px,     // 0px       Mobile first
+  mobile:     $mobile,   // 440px   ~ Small Tablet or Landscape Mobile
+  tablet:     $tablet,   // 700px   ~ Tablet
+  desktop:    $desktop,  // 1000px  ~ Desktop
+  widescreen: $widescreen   // 1400px  ~ Large desktop up
 );
 
 
@@ -162,11 +162,11 @@ $breakpoints: (
 // Aim for 75–100 characters a line when possible, at smaller sizes type size is more important.
 // ! Make sure to have as many widths as breakpoints above.
 $maxwidths: (
-  maxwidth-0 500,  // 500px wide
-  maxwidth-1 550,  // 550px wide
-  maxwidth-2 600,  // 600px wide
-  maxwidth-3 680,  // 680px wide
-  maxwidth-4 750   // 750px wide
+  maxwidth-0: 500,  // 500px wide
+  maxwidth-1: 550,  // 550px wide
+  maxwidth-2: 600,  // 600px wide
+  maxwidth-3: 680,  // 680px wide
+  maxwidth-4: 750   // 750px wide
 );
 
 // -------------------------------------

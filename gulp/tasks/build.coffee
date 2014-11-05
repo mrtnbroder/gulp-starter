@@ -1,16 +1,25 @@
 
-gulp     = require("gulp")
-sequence = require("run-sequence")
+'use strict'
 
-tasks = [
-  "browserify"
-  "sass"
-  "images"
-  "copy"
+gulp = require('gulp')
+sequence = require('run-sequence')
+
+devTasks = [
+  'webpack:dev'
+  'sass'
+  'images'
+  'copy'
+]
+
+buildTasks = [
+  'webpack:build'
+  'sass'
+  'images'
+  'copy'
 ]
 
 if global.isProduction
-  gulp.task "build", ->
-    sequence tasks, "uncss"
+  gulp.task 'build', ->
+    sequence buildTasks
 else
-  gulp.task "build", tasks
+  gulp.task 'build', devTasks

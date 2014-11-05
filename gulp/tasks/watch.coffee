@@ -1,14 +1,15 @@
 
-gulp = require("gulp")
+gulp = require('gulp')
 
-gulp.task "watch", [
-  "setWatch"
-  "browserSync"
+gulp.task 'watch', [
+  'setWatch'
+  'build'
+  'browserSync'
 ], ->
-  # gulp.watch "src/sass/grid.{scss,sass}", ["grid"]
-  gulp.watch "src/sass/**", ["sass"]
-  gulp.watch "src/images/**", ["images"]
-  gulp.watch "src/htdocs/**", ["copy"]
+  # gulp.watch 'src/sass/grid.{scss,sass}', ['grid']
+  gulp.watch 'src/sass/**', ['sass']
+  gulp.watch 'src/images/**', ['images']
+  gulp.watch 'src/htdocs/**', ['copy']
   return
 
 

@@ -77,12 +77,12 @@ $default-order:
       $imp: $imp + 1;
     }
 
-    $tmp-list: map-merge($important-list, $ideal-list);
+    $tmp-list: zip($important-list, $ideal-list);
     $tmp-list: quick-sort($tmp-list);
 
     @for $i from 1 through $greek-length {
       $numbers: append($numbers, nth($tmp-list, $i));
-      $return-list: map-merge($return-list, nth($greek, -$i) nth($numbers, $i), comma);
+      $return-list: zip($return-list, nth($greek, -$i) nth($numbers, $i), comma);
     }
   }
 
